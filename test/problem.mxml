@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"  minWidth="955" minHeight="600" resize="application2_resizeHandler(event)" creationComplete="application2_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			/*
+				1) What will the code do and how will it work if button is clicked multiple times. Assume data is changed every time you click on the button. Generate sample output for both labels for button being clicked 5 times. 
+				2) Are there any problems with the code. If so please list them. List as many as you can. 
+				3) Is it possible to optimize the code?
+				4) If the employee data isn't displayed after clicking the button, how will you debug it? Please list all the possible things you can do to debug the code
+			
+			*/
+			
+			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.http.mxml.HTTPService;
+			
+			
+			private var employeeName:String;
+
+			private var departmentService:HTTPService;
+			
+			
+			protected function getData_clickHandler(event:MouseEvent):void {
+				// TODO Auto-generated method stub
+				var employeeService:HTTPService = new HTTPService();
+				employeeService.addEventListener(ResultEvent.RESULT,gotEmployeeDataBack);
+				
+				employeeService.url = "some url";
+				/* Data returned is in json format { "employeeName" : "Ravi" }*/
+				employeeService.send();
+			}
+			
+			protected function gotEmployeeDataBack(event:ResultEvent):void {
+				employeeName = event.result.employeeName;							
+			}
+						
+			
+			protected function application2_resizeHandler(event:ResizeEvent):void
+			{
+				mainGroup.width = stage.width - 10;
+				mainGroup.x = 5;
+				
+			}
+			
+			protected function application2_creationCompleteHandler(event:FlexEvent):void
+			{
+				mainGroup.width = stage.width - 10;
+				mainGroup.x = 5;
+				
+				departmentService = new HTTPService();
+				departmentService.addEventListener(ResultEvent.RESULT,gotDepartmentDataBack);
+				
+				departmentService.url = "some url";
+				/* Data returned is in json format { "department" : "IT" }*/				
+				departmentService.send();
+			}
+			
+			protected function gotDepartmentDataBack(event:ResultEvent):void
+			{
+				// TODO Auto-generated method stub
+				departmentLabel.text = event.result.department;
+				departmentService.removeEventListener(ResultEvent.RESULT,gotDepartmentDataBack);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	
+	<s:Group width="100%" height="100%">
+		<s:VGroup id="mainGroup" >
+			<s:Label id="employeeNameLabel" text="{employeeName}" />
+			<s:Label id="departmentLabel"  />
+		</s:VGroup>
+		
+		<s:Button id="getData" click="getData_clickHandler(event)" />
+	</s:Group>
+	
+</s:Application>

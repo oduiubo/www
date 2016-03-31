@@ -1,0 +1,41 @@
+/* alex's code */
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300,400italic);
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+.flex-wrapper {
+    display: -webkt-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding: .5em;
+    border: 1px solid red;
+    height: 100vh;
+    width: 100%;
+}
+.flex-item {
+    width: 50%;
+    border: 1px solid green;
+    padding: .5em;
+}
+
+/* oroginal code */
+#mainDiv{
+    width: 100%;
+    height : 100% ;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid red; }
+#innerDiv{
+    width: 100%;
+    height : 100% ;
+    border: 1px solid green; }
+.leftDiv{ width: 50%; }
+.rightDiv{ width: 50%; }

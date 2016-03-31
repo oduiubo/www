@@ -1,12 +1,14 @@
-function myTime() {
-	return Date.now();
-}
-/* test app */
+/* main application module */
 (function() {
-	var app = angular.module('store',[]);
-	app.controller('StoreController', function() {
-		this.products = gems;
-	});
+	var app = angular.module('store',["store-products"]);
+	app.controller('StoreController', ['$http', function($http) {
+		//this.products = gems;
+    var store = this;
+    store.products = [];
+    $http.get('/products.json').success(function(data) {
+      store.products = data; 
+    });
+	}]);
   app.controller('ReviewController', function() {
     this.review = {};
     this.addReview = function(newValue) {
@@ -15,55 +17,7 @@ function myTime() {
       this.review = {};
     };
   });
-  app.directive('productTitle', function(){
-    return {
-      //restrict: 'A',
-      restrict: 'E',
-      templateUrl: 'product-title.html'
-    };
-  });
-  app.directive('productDescription', function(){
-    return {
-      restrict: 'E',
-      templateUrl: 'product-description.html'
-    };
-  });
-  app.directive('productSpec', function(){
-    return {
-      restrict: 'E',
-      templateUrl: 'product-spec.html'
-    };
-  });
-  app.directive('productPanels', function(){
-    return {
-      restrict: 'E',
-      templateUrl: 'product-panels.html',
-      controller: function () {
-        this.tab = 1;
-        this.setTab = function(newValue) {
-          this.tab = newValue;
-        };
-        this.isSet = function(newValue) {
-          return this.tab === newValue;
-        };
-      },
-      controllerAs: 'panels'
-    };
-  });
-  app.directive('productGallery', function(){
-    return {
-      restrict: 'E',
-      templateUrl: 'product-gallery.html',
-      controller: function (){
-        this.current = 0;
-        this.setCurrent = function(newValue) {
-          this.current = newValue || 0;
-        };
-      },
-      controllerAs: 'gallery'
-    };
-  });
-  var gems = [
+  /*var gems = [
       {
         name: 'Azurite',
         description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
@@ -150,5 +104,5 @@ function myTime() {
           createdOn: 1397490980837
         }]
       }
-    ];
+    ];*/
 })();
