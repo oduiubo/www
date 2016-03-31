@@ -1,0 +1,57 @@
+<section class="tab">
+  <ul class="nav nav-pills">
+    <li ng-class="{active:panels.isSet(1)}">
+      <a href="" ng-click="panels.setTab(1)">Description</a></li>
+    <li ng-class="{active:panels.isSet(2)}">
+      <a href="" ng-click="panels.setTab(2)">Specs</a></li>
+    <li ng-class="{active:panels.isSet(3)}">
+      <a href="" ng-click="panels.setTab(3)">Reviews</a></li>
+  </ul>
+  <product-description ng-show="panels.isSet(1)"></product-description>
+  <!--div class="panel" ng-show="panel.isSet(1)" style="height: 6em;">
+    <h4>Description</h4>
+    <blockquote>{{product.description}}</blockquote>
+  </div-->
+  <product-spec ng-show="panels.isSet(2)"></product-spec>
+  <!--div class="panel" ng-show="panel.isSet(2)" style="height: 6em;">
+    <h4>Specs</h4>
+    <blockquote>Shine: {{product.shine}}</blockquote>
+  </div-->
+  <div class="panel" ng-show="panels.isSet(3)">
+    <ul>
+      <h4>Reviews</h4>
+        <li ng-repeat="review in product.reviews">
+          <blockquote>
+            <strong>{{review.stars}} Stars</strong>
+            {{review.body}}
+            <cite class="clearfix">—{{review.author}} on {{review.createdOn | date: 'yyyy-MM-dd HH:mm:ss'}}</cite>
+          </blockquote>
+        </li>
+    </ul>
+    <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate="true">
+      <blockquote>
+        <strong>Status: {{reviewCtrl.review.stars}}</strong>
+        {{reviewCtrl.review.body}}
+        <cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
+      </blockquote>
+      <!-- review form -->
+      <h4>Submit a Review</h4>
+      <fieldset class="form-group">
+        <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required="true">
+          <option value="">Rate the product</option>
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review" required="true"></textarea>
+      </fieldset>
+      <fieldset class="form-group">
+      <label>by: </label>
+        <input ng-model="reviewCtrl.review.author" type="email" name="author" class="form-control" placeholder="jimmyDean@example.org" title="Email" required="true" />
+      </fieldset>
+      <fieldset class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary pull-right" />
+      </fieldset>
+      <div class="form-control">review is {{reviewForm.$valid}}</div>
+    </form>
+  </div>
+</section>

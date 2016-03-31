@@ -7,6 +7,21 @@ function myTime() {
 	app.controller('StoreController', function() {
 		this.products = gems;
 	});
+	/*app.controller("TabController", function() {
+    this.tab = 1;
+    this.setTab = function(newValue) {
+      this.tab = newValue;
+    };
+    this.isSet = function(newValue) {
+      return this.tab === newValue;
+    };
+  });*/
+	/*app.controller('GalleryController', function(){
+    this.current = 0;
+    this.setCurrent = function(newValue) {
+      this.current = newValue || 0;
+    };
+  });*/
   app.controller('ReviewController', function() {
     this.review = {};
     this.addReview = function(newValue) {
