@@ -1,0 +1,52 @@
+/*@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300,400italic);*/
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300,400italic);
+*font-family: 'Roboto Condensed', sans-serif;*/
+/*@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+*font-family: 'Poiret One', cursive; */
+/*@import url(https://fonts.googleapis.com/css?family=Lobster);
+*font-family: 'Lobster', cursive;*/
+/*@import url(https://fonts.googleapis.com/css?family=Fredericka+the+Great);
+*font-family: 'Fredericka the Great', cursive;*/
+/*@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+*font-family: 'Droid Sans', sans-serif;*/
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800,900,100,200);
+*font-family: 'Raleway', 'Open Sans', sans-serif; */
+/*@font-face {
+	font-family: 'inconsolata';
+	src: url('files/inconsolata.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}*/
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    /*font-family: 'Droid Sans', sans-serif;*/
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+.flex-wrapper {
+    display: -webkt-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding: 1em .5em;
+    /*border: 1px solid red;*/
+    height: 100vh;
+    width: 100%;
+}
+.flex-item {
+    width: 50%;
+    /*border: 1px solid gray;*/
+    padding: .5em;
+}
+.p-indent p {
+    text-indent: 1em;
+}
+.p-indent p, h1, h2, h3, h4 {
+    text-indent: .5em;
+}
