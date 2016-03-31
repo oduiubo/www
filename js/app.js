@@ -1,5 +1,5 @@
 function myTime() {
-	return new Date().getTime();
+	return Date.now();
 }
 /* test app */
 (function() {
@@ -20,6 +20,14 @@ function myTime() {
     this.current = 0;
     this.setCurrent = function(newValue) {
       this.current = newValue || 0;
+    };
+  });
+  app.controller('ReviewController', function() {
+    this.review = {};
+    this.addReview = function(newValue) {
+      this.review.createdOn = Date.now();
+      newValue.reviews.push(this.review);
+      this.review = {};
     };
   });
   var gems = [
