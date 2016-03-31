@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
+	<!--link rel="stylesheet" type="text/css" href="css/font-droidsans.css" /-->
 	<title>angular</title>
 	<style type="text/css">
 		* {
@@ -41,21 +42,21 @@
     <section class="tab" ng-controller="TabController as panel">
       <ul class="nav nav-pills">
         <li ng-class="{active:panel.isSet(1)}">
-          <a href="#" ng-click="panel.setTab(1)">Description</a></li>
+          <a href="" ng-click="panel.setTab(1)">Description</a></li>
         <li ng-class="{active:panel.isSet(2)}">
-          <a href="#" ng-click="panel.setTab(2)">Specs</a></li>
+          <a href="" ng-click="panel.setTab(2)">Specs</a></li>
         <li ng-class="{active:panel.isSet(3)}">
-          <a href="#" ng-click="panel.setTab(3)">Reviews</a></li>
+          <a href="" ng-click="panel.setTab(3)">Reviews</a></li>
       </ul>
-      <div class="panel" ng-show="panel.isSet(1)">
+      <div class="panel" ng-show="panel.isSet(1)" style="height: 6em;">
         <h4>Description</h4>
         <blockquote>{{product.description}}</blockquote>
       </div>
-      <div class="panel" ng-show="panel.isSet(2)">
+      <div class="panel" ng-show="panel.isSet(2)" style="height: 6em;">
         <h4>Specs</h4>
         <blockquote>Shine: {{product.shine}}</blockquote>
       </div>
-      <div class="panel" ng-show="panel.isSet(3)">
+      <div class="panel" ng-show="panel.isSet(3)" style="height: 6em;">
         <h4>Reviews</h4>
         <blockquote></blockquote>
       </div>
